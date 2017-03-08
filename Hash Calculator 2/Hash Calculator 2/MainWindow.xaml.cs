@@ -36,14 +36,16 @@ namespace Hash_Calculator_2
 			DockPanel dock = InitializeDock();
 			mainWindow.Content = dock;
 
+			Menu menu = InitializeMenu();
+			PopulateMenu(menu);
+			DockPanel.SetDock(menu, Dock.Top);
+			dock.Children.Add(menu);
+
 			StackPanel mainStackPanel = InitializeStackPanel();
 			DockPanel.SetDock(mainStackPanel, Dock.Bottom);
 			dock.Children.Add(mainStackPanel);
 
-			Menu menu = InitializeMenu();
-			PopulateMenu(menu);
-			dock.Children.Add(menu);
-
+			
 			Grid upperGrid = InitializeUpperGrid();
 			PopulateUpperGrid(upperGrid);
 			mainStackPanel.Children.Add(upperGrid);
@@ -67,14 +69,6 @@ namespace Hash_Calculator_2
 			DockPanel dock = new DockPanel();
 			dock.Margin = DOCK_MARGIN;
 			return dock;
-		}
-
-		private StackPanel InitializeStackPanel()
-		{
-			Thickness STACKPANEL_MARGIN = new Thickness(10, 10, 0, 0);
-			StackPanel mainStackPanel = new StackPanel();
-			mainStackPanel.Margin = STACKPANEL_MARGIN;
-			return mainStackPanel;
 		}
 
 		private Menu InitializeMenu()
@@ -121,6 +115,14 @@ namespace Hash_Calculator_2
 			help.Items.Add(about);
 
 			menu.Items.Add(help);
+		}
+
+		private StackPanel InitializeStackPanel()
+		{
+			Thickness STACKPANEL_MARGIN = new Thickness(10, 10, 0, 0);
+			StackPanel mainStackPanel = new StackPanel();
+			mainStackPanel.Margin = STACKPANEL_MARGIN;
+			return mainStackPanel;
 		}
 
 		private void SetColumnDefinition(Grid grid)
