@@ -27,7 +27,7 @@ namespace Hash_Calculator_2
 		TextBox compareContent;
 
 
-		Dictionary<HashAlgorithm, GuiRow> guiRows = new Dictionary<HashAlgorithm, GuiRow>();
+		Dictionary<HashAlgorithmTyle, GuiRow> guiRows = new Dictionary<HashAlgorithmTyle, GuiRow>();
 
 		public MainWindow()
 		{
@@ -215,7 +215,7 @@ namespace Hash_Calculator_2
 		{
 			double PROGRESS_HEIGHT = 15;
 			int i = 0;
-			foreach (HashAlgorithm hashAlgorithm in Enum.GetValues(typeof(HashAlgorithm)))
+			foreach (HashAlgorithmTyle hashAlgorithm in Enum.GetValues(typeof(HashAlgorithmTyle)))
 			{
 				mainGrid.RowDefinitions.Add(new RowDefinition());
 				GuiRow guiRow = new GuiRow();
@@ -231,7 +231,7 @@ namespace Hash_Calculator_2
 
 				Label label = new Label();
 				label.VerticalAlignment = VerticalAlignment.Center;
-				label.Content = Enum.GetName(typeof(HashAlgorithm), hashAlgorithm);
+				label.Content = Enum.GetName(typeof(HashAlgorithmTyle), hashAlgorithm);
 				leftPanel.Children.Add(label);
 
 				Grid.SetRow(leftPanel, i);
